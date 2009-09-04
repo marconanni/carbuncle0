@@ -1,0 +1,100 @@
+PARSER_BEGIN(CaTraScaParser)
+
+	public class CaTraScaParser {}
+PARSER_END(CaTraScaParser)
+
+void Scope() : {}
+{
+	"CaTraSca" "{" [Continue()] Magazzino() ";" (DescrizionePeriodo())+ "}"
+}
+
+void Continue() : {}
+{
+	"CONTINUE" "=" <BOOL>
+}
+
+void Magazzino() : {}
+{
+	"MAGAZZINO" NomeComposto() [Indirizzo()]
+}
+
+void Indirizzo() : {}
+{
+	"," "VIA" NomeComposto() [NumeroCivico()] "," <NUM> NomeComposto()
+}
+
+void NumeroCivico() : {}
+{
+	", N." <NUM>
+}
+
+void DescrizionePeriodo() : {}
+{
+	"{" Periodo() [Giacenza()";"] "{" (Azione())+ "}" "}"
+}
+
+void Periodo() : {}
+{
+	"DA" Data() "A" Data() ";"
+}
+
+void Data() : {}
+{
+	<NUM> "-" <MESE> "-" <NUM>
+}
+
+void Giacenza() : {}
+{
+	"GIACENZA INIZIALE:" Residuo() ("," Residuo())*
+}
+
+void Residuo() : {}
+{
+	Prodotto() "QUANTITA" <NUM>
+}
+
+void Prodotto() : {}
+{
+	"MARCA" NomeComposto() "MODELLO" NomeComposto()
+}
+
+void Azione() : {}
+{
+	(Movimento() | Trasformazione()) ";"
+}
+
+void Movimento() : {}
+{
+	<MOVIMENTO> ":" (Residuo())+
+}
+
+void Trasformazione() : {}
+{
+	"TRASFORMAZIONE:" Materia() ("+" Materia())* "=" Materia() ("+" Materia())*
+}
+
+void Materia() : {}
+{
+	"(" <NUM> Prodotto() ")"
+}
+
+void NomeComposto() : {}
+{
+	<NOME> (<NOME>)*
+}
+
+SKIP : 
+	{
+ 		" " | "\t" | "\n" | "\r"
+	}
+
+TOKEN : 
+	{ 
+		  <MESE: "GENNAIO" | "FEBBRAIO" | "MARZO" | "APRILE" | "MAGGIO" | "GIUGNO" | "LUGLIO" | "AGOSTO" | "SETTEMBRE" | "OTTOBRE" | "NOVEMBRE" | "DICEMBRE">
+		| <BOOL: "TRUE" | "FALSE">
+		| <MOVIMENTO: "CARICO" | "SCARICO">
+		| <NUM: ["1"-"9"] (<CIFRA>)* | "0">
+		| <CIFRA: ["0"-"9"]>
+		| <CARATTERE: ["a"-"z", "A"-"Z", "_", "\'"]>
+		| <NOME: <CARATTERE> (<CARATTERE> | <CIFRA>)*>
+	}
