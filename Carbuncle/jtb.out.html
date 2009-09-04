@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>BNF for jtb.out.jj</TITLE>
+</HEAD>
+<BODY>
+<H1 ALIGN=CENTER>BNF for jtb.out.jj</H1>
+<H2 ALIGN=CENTER>TOKENS</H2>
+<TABLE>
+ <!-- Token -->
+ <TR>
+  <TD>
+   <PRE>
+&lt;DEFAULT&gt; SKIP : {
+" "
+| "\t"
+| "\n"
+| "\r"
+}
+
+   </PRE>
+  </TD>
+ </TR>
+ <!-- Token -->
+ <TR>
+  <TD>
+   <PRE>
+&lt;DEFAULT&gt; TOKEN : {
+&lt;ATTACCO: "attacca"&gt;
+| &lt;ELEMENTALE: "fire" | "thuder" | "blizzard" | "sancta" | "dark" | "quake" | "aero"&gt;
+| &lt;NONELEMENTALE: "flare" | "antima" | "dark"&gt;
+| &lt;DISTATO: "novox" | "blind" | "bio" | "slow" | "haste" | "protect" | "shell" | "medusa"&gt;
+| &lt;BIANCA: "energia" | "reiz" | "esna" | "dispel" | "areiz"&gt;
+| &lt;NOMEOGGETTO: "pozione" | "antidoto" | "erbaDellEco" | "Collirio" | "AgoDorato" | "CodaDiFenice"&gt;
+| &lt;GF: "Shiva" | "Ifrit" | "Bahamut" | "Leviathan" | "Quetzal" | "Carbuncle"&gt;
+| &lt;NOMETECNICA: "SpiraleDiPotere" | "Renzokuken" | "EstasiMagica" | "BloodFest"&gt;
+| &lt;ALLEATI: "alleati"&gt;
+| &lt;NEMICI: "nemici"&gt;
+| &lt;SU: "su"&gt;
+| &lt;PERSONAGGIO: (["A"-"Z","a"-"z"])+&gt;
+}
+
+   </PRE>
+  </TD>
+ </TR>
+</TABLE>
+<H2 ALIGN=CENTER>NON-TERMINALS</H2>
+<TABLE>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod1">S</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>&lt;PERSONAGGIO&gt; <A HREF="#prod2">Azione</A> <A HREF="#prod3">Bersaglio</A></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod3">Bersaglio</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>( &lt;ALLEATI&gt; | &lt;NEMICI&gt; | &lt;PERSONAGGIO&gt; )</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod2">Azione</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>( &lt;ATTACCO&gt; | <A HREF="#prod4">Magia</A> | <A HREF="#prod5">Oggetto</A> | <A HREF="#prod6">Invocazione</A> | <A HREF="#prod7">TecnicaSpeciale</A> )</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod4">Magia</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>"lancia" ( ( &lt;ELEMENTALE&gt; | &lt;NONELEMENTALE&gt; | &lt;DISTATO&gt; | &lt;BIANCA&gt; ) ) &lt;SU&gt;</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod5">Oggetto</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>"usa" &lt;NOMEOGGETTO&gt; &lt;SU&gt;</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod6">Invocazione</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>"invoca" &lt;GF&gt; &lt;SU&gt;</TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=BASELINE><A NAME="prod7">TecnicaSpeciale</A></TD>
+<TD ALIGN=CENTER VALIGN=BASELINE>::=</TD>
+<TD ALIGN=LEFT VALIGN=BASELINE>"esegue" &lt;NOMETECNICA&gt; &lt;SU&gt;</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>
