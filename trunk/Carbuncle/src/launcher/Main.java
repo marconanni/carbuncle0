@@ -21,7 +21,7 @@ public class Main {
 		ParserCarbuncle parser = new ParserCarbuncle(stream);
 		try {
 			Node root = parser.S();
-			root.accept(new PrintDepthFirstVisitor());
+			root.accept(new SimpleSemanticVisitor());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

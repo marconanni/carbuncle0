@@ -1,0 +1,164 @@
+/**
+ * JavaCC file
+ */ 
+ 
+options {
+  JDK_VERSION = "1.6";
+}
+
+PARSER_BEGIN(ParserBaseball)
+package grammar;
+public class ParserBaseball {
+  public static void main(String args[]) throws ParseException {
+    ParserBaseball parser = new ParserBaseball(System.in);
+	parser.S();
+  }
+}
+PARSER_END(ParserBaseball)
+
+SKIP :
+{
+ 	" "
+|	"\r"
+|	"\t"
+|	"\n"
+}
+TOKEN :
+{
+	< BASE: ("/"|"//"|"///"|"////"|"HR")>
+|	< K: "K">
+|	< OUT_VOLO: "F">
+|	< OUT_RUBATA: "CS">
+|	< BASE_SU_BALL: "BB">
+|	< INTERFERENZA: "INT">
+|	< BASE_RUBATA: "SB">
+| 	< COLPITO: "HP">
+|	< ERRORE: "E">
+|	< TIPO_LANCIO: ("STRIKE"|"BALL"|"FOUL BALL")>
+|   < CIFRA_NON_NULLA: ["1" - "9"] >
+| 	< ZERO: "0" >
+|	< NOME: <PAROLA>(<PAROLA>)*>
+|	< PAROLA: ["a"-"z","A"-"Z", "_"] (["a"-"z","A"-"Z","_"])*>
+|	< POSIZIONE_DIFESA: (" Lanciatore"|" Ricevitore"|" Prima_Base"|" Seconda_Base"|" Terza_Base"|" Interbase"|" Esterno_Sinistro"|" Esterno_Centro"|" Esterno_Destro")>
+}
+
+void S() : {}
+{
+	SezioneA() SezioneB() "{" SezioneC() "}"
+}
+void SezioneA() : {}
+{
+	Squadre() Arbitro()
+}
+void Squadre() : {}
+{
+	"Squadra Ospite:" <NOME> "," "Squadra Casa:"<NOME> ";"
+}
+void Arbitro() : {}
+{
+	"Arbitro:" <NOME> ";"
+}
+void SezioneB() : {}
+{
+	ListaLineUp()  
+}
+void ListaLineUp() : {}
+{
+	"Line-Up squadra ospite:" LineUp() ";" "Line-Up squadra casa:" LineUp() ";"
+}
+void LineUp() : {}
+{
+	Giocatore() "," Giocatore() "," Giocatore() "," Giocatore() "," Giocatore() "," Giocatore() "," Giocatore() "," Giocatore() "," Giocatore()
+}
+void Giocatore() : {}
+{
+	<NOME> <CIFRA_NON_NULLA> <POSIZIONE_DIFESA>
+}
+void SezioneC() : {}
+{
+	( Inning() )+
+}
+void Inning() : {}
+{
+	"Attacco squadra ospite:" Attacco() "Attacco squadra casa:" Attacco()
+}
+void Attacco() : {}
+{
+	( "(" Battuta() ")" )+
+}
+void Battuta() : {}
+{
+	( Lancio() )+
+}
+void Lancio() : {}
+{
+	Giocatore() "," EffettoBattuta() ";"
+}
+void EffettoBattuta() : {}
+{
+	PallaBattuta() | PallaNonBattuta()
+}
+void PallaBattuta() : {}
+{
+	Esito() ( Avanzamento() )*
+}
+void PallaNonBattuta() : {}
+{
+	<TIPO_LANCIO> ( Esito() )? ( Avanzamento() )*
+}
+void Esito() : {}
+{
+	ArrivoInBase() | Eliminazione()
+}
+void Avanzamento() : {}
+{	
+	Giocatore() Esito()
+}
+void ArrivoInBase() : {}
+{
+	Base() | BaseSuBall() | Interferenza() | BaseRubata() | Errore() | Colpito()
+}
+void Eliminazione() : {}
+{
+	StrikeOut() | OutVolo() | OutSuBase() | OutRubata()
+}
+void Base() : {}
+{
+	<BASE>
+}
+void BaseSuBall() : {}
+{
+	<BASE_SU_BALL>
+}
+void Colpito() : {}
+{
+	<COLPITO>
+}
+void Interferenza():{}
+{
+	<INTERFERENZA>
+}
+void BaseRubata():{}
+{
+	<BASE_RUBATA> <BASE>
+}
+void Errore():{}
+{
+	<ERRORE> <CIFRA_NON_NULLA> <BASE>
+}
+void StrikeOut():{}
+{
+	<K>
+}
+void OutVolo():{}
+{
+	<OUT_VOLO> <CIFRA_NON_NULLA>
+}
+void OutSuBase():{}
+{
+	<CIFRA_NON_NULLA> <CIFRA_NON_NULLA>
+}
+void OutRubata():{}
+{
+	<OUT_RUBATA> <CIFRA_NON_NULLA>
+}

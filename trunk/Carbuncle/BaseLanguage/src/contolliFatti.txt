@@ -1,0 +1,24 @@
+Controlli fatti nel file ParserBaseball:
+1) Controllo che la partita abbia almeno 9 inning;
+2) Controllo che la partita non finisca in pareggio;
+3) Controllo che le due squadre non abbiano lo stesso nome;
+4) Controllo che un giocatore che viene inserito in squadra non abbia lo stesso nome o numero o posizione di un altro già in squadra (controllo eseguito grazie alla classe ControlloDati);
+5) Controllo che il numero di giocatori per squadra non sia più di 9;
+6) Controllo che per ogni attacco ci siano almeno 3 turni battuta;
+7) Controllo che ogni attacco finisca dopo 3 out;
+8) Controllo che un giocatore non finisca il proprio turno di battuta senza essere eliminato o andato in base;
+9) Controllo che un giocatore non sia ancora alla battuta dopo più di 4 ball;
+10)Controllo che un giocatore non sia ancora alla battuta dopo più di 3 strike;
+11)Controllo che sulle basi non ci siano più di 3 giocatori (controllo eseguito grazie alla classe ControlloDati);
+12)Controllo che non ci siano più giocatori che condividono la stessa base (controllo eseguito grazie alla classe ControlloDati);
+13)Controllo che il giocatore alla battuta sia quello corretto in base al Line-Up;
+14)Controllo che non si possa andare in BB se è stata battuta la palla;
+15)Controllo che il battitore abbia 4 ball per andare BB;
+16)Controllo che non ci sia il battitore colpito in caso di battuta;
+17)Controllo che non ci sia una base per interferenza nel caso in cui venga battuta la palla;
+18)Controllo che non ci sia un K se è stata battuta la palla;
+19)Controllo che il battitore abbia 3 strike per andare K;
+20)Controllo che non ci siano out al volo se non è stata battuta la palla;
+21)Controllo che il battitore non possa essere eliminato sulle basi se non ha battuto;
+22)Controllo che non ci sia un superamento sulle basi;
+23)Controllo che il giocatore alla battuta sia consistente (nome, ordine e ruolo) con quanto riportato nel lineup;
