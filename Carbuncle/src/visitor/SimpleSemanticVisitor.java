@@ -105,9 +105,11 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	    */
 	   public Object visit(S n) {
 	      Object _ret=null;
-	      n.f0.accept(this);
-	      n.f1.accept(this);
+	      personaggio =(String) n.f0.accept(this);
+	      // inserire codice per verificare che il nome del personaggio sia stato memorizzato nella variabile 
 	      n.f2.accept(this);
+	      n.f1.accept(this);
+	     
 	      return _ret;
 	   }
 
@@ -132,9 +134,10 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	    *       | TecnicaSpeciale()
 	    */
 	   public Object visit(Azione n) {
-		  Object _ret=null;
+		  
 	      n.f0.accept(this);
-	      return _ret;
+	      System.out.println(personaggio + " ha attaccato " + bersaglio+ " causando un danno di 200HP");
+	      return null;
 	   }
 
 	   /**

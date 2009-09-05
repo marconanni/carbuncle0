@@ -1,0 +1,235 @@
+Squadra Ospite: Orsi, Squadra Casa: Tigri;
+Arbitro: Rossi_Franco;
+
+Line-Up squadra ospite:
+Corsinovi 1 Lanciatore,
+Alocci 2 Ricevitore,
+Bartoloni 3 Seconda_Base,
+Taiti 4 Esterno_Centro,
+Basagni 5 Prima_Base,
+Lelli 6 Interbase,
+Livi 7 Terza_Base,
+Mengato 8 Esterno_Sinistro,
+Maleci 9 Esterno_Destro;
+
+Line-Up squadra casa:
+Bandinelli 1 Seconda_Base,
+Castorina 2 Prima_Base,
+Asteni 3 Lanciatore,
+Scovaventi 4 Esterno_Centro,
+Castagnoli 5 Esterno_Sinistro,
+Rana 6 Esterno_Destro,
+Fazzi 7 Terza_Base,
+Marzocchi 8 Ricevitore,
+Cittadini 9 Interbase;
+{
+Attacco squadra ospite:
+(Corsinovi 1 Lanciatore,STRIKE;
+Corsinovi 1 Lanciatore,BALL;
+Corsinovi 1 Lanciatore,F6;)
+(Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,STRIKE;
+Alocci 2 Ricevitore,FOUL BALL;
+Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,STRIKE K;)
+(Bartoloni 3 Seconda_Base,13;)
+Attacco squadra casa:
+(Bandinelli 1 Seconda_Base,BALL;
+Bandinelli 1 Seconda_Base,STRIKE;
+Bandinelli 1 Seconda_Base,FOUL BALL;
+Bandinelli 1 Seconda_Base,BALL;
+Bandinelli 1 Seconda_Base,STRIKE K;)
+(Castorina 2 Prima_Base,12;)
+(Asteni 3 Lanciatore,F8;)
+
+Attacco squadra ospite:
+(Taiti 4 Esterno_Centro,STRIKE;
+Taiti 4 Esterno_Centro,BALL;
+Taiti 4 Esterno_Centro,F6;)
+(Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,STRIKE;
+Basagni 5 Prima_Base,FOUL BALL;
+Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,STRIKE K;)
+(Lelli 6 Interbase,13;)
+Attacco squadra casa:
+(Scovaventi 4 Esterno_Centro,BALL;
+Scovaventi 4 Esterno_Centro,STRIKE;
+Scovaventi 4 Esterno_Centro,FOUL BALL;
+Scovaventi 4 Esterno_Centro,BALL;
+Scovaventi 4 Esterno_Centro,STRIKE K;)
+(Castagnoli 5 Esterno_Sinistro,STRIKE;
+Castagnoli 5 Esterno_Sinistro,//;)
+(Rana 6 Esterno_Destro,BALL Castagnoli 5 Esterno_Sinistro SB ///;
+Rana 6 Esterno_Destro,STRIKE Castagnoli 5 Esterno_Sinistro CS 1;
+Rana 6 Esterno_Destro, F7;)
+
+Attacco squadra ospite:
+(Livi 7 Terza_Base,STRIKE;
+Livi 7 Terza_Base,BALL;
+Livi 7 Terza_Base,33;)
+(Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,STRIKE;
+Mengato 8 Esterno_Sinistro,FOUL BALL;
+Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,BALL BB;)
+(Maleci 9 Esterno_Destro, E 6 / Mengato 8 Esterno_Sinistro //;)
+(Corsinovi 1 Lanciatore,// Maleci 9 Esterno_Destro /// Mengato 8 Esterno_Sinistro ////;)
+(Alocci 2 Ricevitore,11 Corsinovi 1 Lanciatore /// Maleci 9 Esterno_Destro ////;)
+(Bartoloni 3 Seconda_Base, F7;)
+Attacco squadra casa:
+(Fazzi 7 Terza_Base,BALL;
+Fazzi 7 Terza_Base,STRIKE;
+Fazzi 7 Terza_Base,FOUL BALL;
+Fazzi 7 Terza_Base,BALL;
+Fazzi 7 Terza_Base,STRIKE K;)
+(Marzocchi 8 Ricevitore,F7;)
+(Cittadini 9 Interbase,F8;)
+
+
+Attacco squadra ospite:
+(Taiti 4 Esterno_Centro,STRIKE;
+Taiti 4 Esterno_Centro,BALL;
+Taiti 4 Esterno_Centro,33;)
+(Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,STRIKE;
+Basagni 5 Prima_Base,FOUL BALL;
+Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,BALL BB;)
+(Lelli 6 Interbase, F5;)
+(Livi 7 Terza_Base,// Basagni 5 Prima_Base ///;)
+(Mengato 8 Esterno_Sinistro,/ Livi 7 Terza_Base /// Basagni 5 Prima_Base ////;)
+(Maleci 9 Esterno_Destro, F7;)
+Attacco squadra casa:
+(Bandinelli 1 Seconda_Base,BALL;
+Bandinelli 1 Seconda_Base,STRIKE;
+Bandinelli 1 Seconda_Base,FOUL BALL;
+Bandinelli 1 Seconda_Base,BALL;
+Bandinelli 1 Seconda_Base,STRIKE K;)
+(Castorina 2 Prima_Base,F6;)
+(Asteni 3 Lanciatore,F8;)
+
+
+Attacco squadra ospite:
+(Corsinovi 1 Lanciatore,STRIKE;
+Corsinovi 1 Lanciatore,BALL;
+Corsinovi 1 Lanciatore,33;)
+(Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,STRIKE;
+Alocci 2 Ricevitore,FOUL BALL;
+Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,BALL BB;)
+(Bartoloni 3 Seconda_Base, E 6 / Alocci 2 Ricevitore //;)
+(Taiti 4 Esterno_Centro,// Bartoloni 3 Seconda_Base /// Alocci 2 Ricevitore ////;)
+(Basagni 5 Prima_Base,/ Taiti 4 Esterno_Centro 33 Bartoloni 3 Seconda_Base ////;)
+(Lelli 6 Interbase, F7;)
+Attacco squadra casa:
+(Scovaventi 4 Esterno_Centro,BALL;
+Scovaventi 4 Esterno_Centro,STRIKE;
+Scovaventi 4 Esterno_Centro,FOUL BALL;
+Scovaventi 4 Esterno_Centro,BALL;
+Scovaventi 4 Esterno_Centro,STRIKE K;)
+(Castagnoli 5 Esterno_Sinistro,F6;)
+(Rana 6 Esterno_Destro,F8;)
+
+
+Attacco squadra ospite:
+(Livi 7 Terza_Base,STRIKE;
+Livi 7 Terza_Base,BALL;
+Livi 7 Terza_Base,33;)
+(Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,STRIKE;
+Mengato 8 Esterno_Sinistro,FOUL BALL;
+Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,BALL BB;)
+(Maleci 9 Esterno_Destro, E 6 / Mengato 8 Esterno_Sinistro //;)
+(Corsinovi 1 Lanciatore,// Mengato 8 Esterno_Sinistro /// Maleci 9 Esterno_Destro ////;)
+(Alocci 2 Ricevitore,/ Corsinovi 1 Lanciatore 33 Mengato 8 Esterno_Sinistro ////;)
+(Bartoloni 3 Seconda_Base, F7;)
+Attacco squadra casa:
+(Fazzi 7 Terza_Base,BALL;
+Fazzi 7 Terza_Base,STRIKE;
+Fazzi 7 Terza_Base,FOUL BALL;
+Fazzi 7 Terza_Base,BALL;
+Fazzi 7 Terza_Base,STRIKE K;)
+(Marzocchi 8 Ricevitore,F6;)
+(Cittadini 9 Interbase,F8;)
+
+
+Attacco squadra ospite:
+(Taiti 4 Esterno_Centro,STRIKE;
+Taiti 4 Esterno_Centro,BALL;
+Taiti 4 Esterno_Centro,33;)
+(Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,STRIKE;
+Basagni 5 Prima_Base,FOUL BALL;
+Basagni 5 Prima_Base,BALL;
+Basagni 5 Prima_Base,BALL BB;)
+(Lelli 6 Interbase, E 6 / Basagni 5 Prima_Base //;)
+(Livi 7 Terza_Base,/ Basagni 5 Prima_Base /// Lelli 6 Interbase 22;)
+(Mengato 8 Esterno_Sinistro,/ Livi 7 Terza_Base /// Basagni 5 Prima_Base ////;)
+(Maleci 9 Esterno_Destro, F7;)
+Attacco squadra casa:
+(Bandinelli 1 Seconda_Base,BALL;
+Bandinelli 1 Seconda_Base,STRIKE;
+Bandinelli 1 Seconda_Base,FOUL BALL;
+Bandinelli 1 Seconda_Base,BALL;
+Bandinelli 1 Seconda_Base,STRIKE K;)
+(Castorina 2 Prima_Base,F7;)
+(Asteni 3 Lanciatore,F8;)
+
+
+Attacco squadra ospite:
+(Corsinovi 1 Lanciatore,STRIKE;
+Corsinovi 1 Lanciatore,BALL;
+Corsinovi 1 Lanciatore,33;)
+(Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,STRIKE;
+Alocci 2 Ricevitore,FOUL BALL;
+Alocci 2 Ricevitore,BALL;
+Alocci 2 Ricevitore,BALL BB;)
+(Bartoloni 3 Seconda_Base, E 6 / Alocci 2 Ricevitore 22;)
+(Taiti 4 Esterno_Centro,// Bartoloni 3 Seconda_Base ///;)
+(Basagni 5 Prima_Base,/ Taiti 4 Esterno_Centro /// Bartoloni 3 Seconda_Base ////;)
+(Lelli 6 Interbase, F7;)
+Attacco squadra casa:
+(Scovaventi 4 Esterno_Centro,BALL;
+Scovaventi 4 Esterno_Centro,STRIKE;
+Scovaventi 4 Esterno_Centro,FOUL BALL;
+Scovaventi 4 Esterno_Centro,BALL;
+Scovaventi 4 Esterno_Centro,STRIKE K;)
+(Castagnoli 5 Esterno_Sinistro,F5;)
+(Rana 6 Esterno_Destro,F8;)
+
+
+Attacco squadra ospite:
+(Livi 7 Terza_Base,STRIKE;
+Livi 7 Terza_Base,BALL;
+Livi 7 Terza_Base,33;)
+(Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,STRIKE;
+Mengato 8 Esterno_Sinistro,FOUL BALL;
+Mengato 8 Esterno_Sinistro,BALL;
+Mengato 8 Esterno_Sinistro,BALL BB;)
+(Maleci 9 Esterno_Destro, F6;)
+(Corsinovi 1 Lanciatore,// Mengato 8 Esterno_Sinistro ///;)
+(Alocci 2 Ricevitore,/ Corsinovi 1 Lanciatore /// Mengato 8 Esterno_Sinistro ////;)
+(Bartoloni 3 Seconda_Base, F7;)
+Attacco squadra casa:
+(Fazzi 7 Terza_Base,BALL;
+Fazzi 7 Terza_Base,STRIKE;
+Fazzi 7 Terza_Base,FOUL BALL;
+Fazzi 7 Terza_Base,BALL;
+Fazzi 7 Terza_Base,STRIKE K;)
+(Marzocchi 8 Ricevitore,F6;)
+(Cittadini 9 Interbase,F8;)
+}
