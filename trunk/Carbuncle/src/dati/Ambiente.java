@@ -23,13 +23,13 @@ public class Ambiente {
 	
 	public Personaggio getPersonaggio (String nome) throws  PersonaggioNonTrovatoException{
 		int k;
-		for (k=0; k<teamGiocatore.size(); k++){
-			if (teamGiocatore.get(k).getNome().compareTo(nome)==0)
-				return teamGiocatore.get(k);
+		for (k=0; k<getTeamGiocatore().size(); k++){
+			if (getTeamGiocatore().get(k).getNome().compareTo(nome)==0)
+				return getTeamGiocatore().get(k);
 		}
-		for (k=0; k<teamAI.size(); k++){
-			if (teamAI.get(k).getNome().compareTo(nome)==0)
-				return teamAI.get(k);
+		for (k=0; k<getTeamAI().size(); k++){
+			if (getTeamAI().get(k).getNome().compareTo(nome)==0)
+				return getTeamAI().get(k);
 		}
 		throw new PersonaggioNonTrovatoException ("Impossibile trovare il personaggio "+ nome);
 		
@@ -37,7 +37,7 @@ public class Ambiente {
 	}
 	
 	public List<Personaggio> getAlleati(String nome)throws  PersonaggioNonTrovatoException{
-		if(teamAI.contains(this.getPersonaggio(nome))) // nota: se il nome del personaggio non è presente in nessuno dei due team viene rilanciata l'eccezione creata dal metodo getPersonaggio. Se passo questo controllo, sono quindi sicuro che il personaggio ci sia in uno dei due team
+		if(getTeamAI().contains(this.getPersonaggio(nome))) // nota: se il nome del personaggio non ï¿½ presente in nessuno dei due team viene rilanciata l'eccezione creata dal metodo getPersonaggio. Se passo questo controllo, sono quindi sicuro che il personaggio ci sia in uno dei due team
 			return getTeamAI();
 		else
 			return getTeamGiocatore();
@@ -45,7 +45,7 @@ public class Ambiente {
 	}
 	
 	public List<Personaggio> getNemici(String nome)throws  PersonaggioNonTrovatoException{
-		if(teamAI.contains(this.getPersonaggio(nome))) // nota: se il nome del personaggio non è presente in nessuno dei due team viene rilanciata l'eccezione creata dal metodo getPersonaggio. Se passo questo controllo, sono quindi sicuro che il personaggio ci sia in uno dei due team
+		if(getTeamAI().contains(this.getPersonaggio(nome))) // nota: se il nome del personaggio non ï¿½ presente in nessuno dei due team viene rilanciata l'eccezione creata dal metodo getPersonaggio. Se passo questo controllo, sono quindi sicuro che il personaggio ci sia in uno dei due team
 			return getTeamGiocatore();
 		else
 			return getTeamAI();
