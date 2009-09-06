@@ -2,6 +2,8 @@ package visitor;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.Vector;
 
 import syntaxtree.Azione;
 import syntaxtree.Bersaglio;
@@ -148,7 +150,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	   public Object visit(Azione n) {
 		  
 	      String action =(String) n.f0.accept(this);
-	      if (action.equals("attacca")){
+	      if (action != null && action.equals("attacca")){
 	    	  calcolaAttacco(); // metodo che applica i danni dell'attacco;
 	      }
 	      
@@ -180,40 +182,49 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	    * f2 -> <SU>
 	    */
 	   public Object visit(Oggetto n) {
-		  Object _ret=null;
+		
 	      n.f0.accept(this);
-	      n.f1.accept(this);
+	      String nomeoggetto=(String)n.f1.accept(this);
 	      n.f2.accept(this);
-	      return _ret;
+	      calcolaOggetto(nomeoggetto);
+	      return null;
 	   }
 
-	   /**
+	   
+
+	/**
 	    * f0 -> "invoca"
 	    * f1 -> <GF>
 	    * f2 -> <SU>
 	    */
-	   public Object visit(Invocazione n) {
-		  Object _ret=null;
+	   public Object visit(Invocazione n) { 
+		  
 	      n.f0.accept(this);
-	      n.f1.accept(this);
+	      String nomeGF=(String)n.f1.accept(this);
 	      n.f2.accept(this);
-	      return _ret;
+	      calcolaInvocazione(nomeGF);
+	      return null;
 	   }
 
-	   /**
+	   
+
+	/**
 	    * f0 -> "esegue"
 	    * f1 -> <NOMETECNICA>
 	    * f2 -> <SU>
 	    */
 	   public Object visit(TecnicaSpeciale n) {
-		  Object _ret=null;
+		  
 	      n.f0.accept(this);
-	      n.f1.accept(this);
+	      String nometecnica = (String)n.f1.accept(this);
 	      n.f2.accept(this);
-	      return _ret;
+	      calcolaTecnicaSpeciale(nometecnica);
+	      return null;
 	   }
 	   
-	   private void calcolaAttacco() {  // nota: si può attaccare un bersaglio solo.
+	  
+
+	private void calcolaAttacco() {  // nota: si può attaccare un bersaglio solo.
 			
 		   
 			
@@ -282,29 +293,120 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 								if(target.getHP()<=0)
 									target.setHP(target.getHPMax()*20/100);
 								else
-									System.out.println("Impossibile usare reiz su un bersaglio con HP maggiore di zero");
+									System.out.println(" usare reiz su un bersaglio con HP maggiore di zero non causa alcun effettto");
 							}
 							else 
 								if(nomemagia.equals("areiz")){// se il personaggio è morto lo riporta in vita con l'Hp al massimo
 									if(target.getHP()<=0)
 										target.setHP(target.getHPMax());
 									else
-										System.out.println("Impossibile usare areiz su un bersaglio con HP maggiore di zero");
+										System.out.println("usare areiz su un bersaglio con HP maggiore di zero non causa alcun effetto");
 								}
 								else{
-									// controllo che nomemagia sia tra le  magie rimaste (come dovrebe essere, visto che ci ah pensato il parser a controllare la validità della frase)
-									
+									// controllo che nomemagia è tra le  magie rimaste ( visto che ci ha pensato il parser a controllare la validità della frase)
+									// tutte le altre magie comportano un danno di 250 HP
+									target.modificaHP(-250);
 								}
-				
-			
-			
-			
 			   
-		   }// fine else
+		   }// fine else principale
 		   
 			
 		}// fine calcolaMagia();
+
+	   
+	   
+	   private void calcolaOggetto(String nomeoggetto) { // anche gli oggetti si possono usare su un bersaglio singolo
+		   
+		   if((bersaglio.compareTo("alleati")==0)||(bersaglio.compareTo("nemici")==0))
+				System.out.println("è possibile usare oggetti solo su un bersaglio singolo");
+		   
+		   else{
+			   Personaggio target = null;
+			   try {
+				 target = ambiente.getPersonaggio(bersaglio);
+			} catch (PersonaggioNonTrovatoException e) {
+				System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+			}
+		   
+		   
+			// tabella degli oggetti che curano gli stati alterati
+		   Hashtable<String,Stati> oggettiStatiRimossi = new Hashtable<String,Stati>();
+		   oggettiStatiRimossi.put("antidoto", Stati.veleno);
+		   oggettiStatiRimossi.put("erbaDellEco", Stati.mutismo);
+		   oggettiStatiRimossi.put("Collirio", Stati.cecità);
+		   oggettiStatiRimossi.put("AgoDorato", Stati.pietra);
+		   if(oggettiStatiRimossi.containsKey(nomeoggetto)){
+			  target.rimuoviStato(oggettiStatiRimossi.get(nomeoggetto));
+		   }
+		   else if (nomeoggetto.equals("pozione"))
+			   target.modificaHP(300);
+		   else { // pozione: anche se si usano pozioni su bersagli con Hp positivo non si ha efferro ( sono come la magia reiz)
+			   if(target.getHP()<=0)
+					target.setHP(target.getHPMax()*20/100);
+				else
+					System.out.println(" usare una pozione su un bersaglio con HP maggiore di zero non causa alcun effettto");
+
+		   }
+		   
+		   } // fine else principale (attacco su bersaglio singolo
 			
+		} // fine metodo calcolaOggetto
+	   
+	   private void calcolaInvocazione(String nomeGF) { // è possibile invocare un GF anche su tutto un team; il nome del GF non viene sfruttato perchè in questa semplice implementazione producono tutti lo stesso danno anche se autolesionistico si possono usare i GF anche contro il proprio team
+			List<Personaggio> targets = null;
+			try{
+				if (bersaglio.equals("alleati"))
+					targets=ambiente.getAlleati(bersaglio);
+				else if (bersaglio.equals("nemici"))
+					targets=ambiente.getNemici(bersaglio);
+				else{
+					targets = new Vector <Personaggio> ();
+					targets.add(ambiente.getPersonaggio(bersaglio));
+				}
+				for(int k =0; k<targets.size(); k++){
+					targets.get(k).modificaHP(-300);
+				}
+			}
+			
+			catch (PersonaggioNonTrovatoException e) {
+				System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+			}
+		}
 		
+	   private void calcolaTecnicaSpeciale(String nometecnica) {  // qui, come per le invocazioni si possono attaccare anche tutte le squadre ( sia quella nemica che quella alleata, tuttavia le tecniche speciali sono eseguibili solo da personaggi con Hp inferiori al 20%
+		   Personaggio character = null;
+		   try {
+				 character = ambiente.getPersonaggio(personaggio);
+				
+			} catch (PersonaggioNonTrovatoException e) {
+				System.out.println("il pesonaggio indicato: " + personaggio+" non è un personaggio valido");
+			}
+			
+			if(character.getHP()<character.getHPMax()*20/100 && character.getHP()>0){
+				
+				List<Personaggio> targets = null;
+				try{
+					if (bersaglio.equals("alleati"))
+						targets=ambiente.getAlleati(bersaglio);
+					else if (bersaglio.equals("nemici"))
+						targets=ambiente.getNemici(bersaglio);
+					else{
+						targets = new Vector <Personaggio> ();
+						targets.add(ambiente.getPersonaggio(bersaglio));
+					}
+					for(int k =0; k<targets.size(); k++){
+						targets.get(k).modificaHP(-500);
+					}
+				}
+				
+				catch (PersonaggioNonTrovatoException e) {
+					System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+				}
+			}
+			else 
+				System.out.println("un personaggio può eseguire tecniche speciali solo se il suo Hp è inferiore al 20% del suo Hp massimo");
+
+			
+		}
 
 	}
