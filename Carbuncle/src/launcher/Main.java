@@ -5,10 +5,24 @@ import java.io.*;
 import parser.*;
 import syntaxtree.*;
 import visitor.*;
+import dati.*;
+import exceptions.PersonaggioNonTrovatoException;
+
+
 public class Main {
 	 
 	
 	public static void main (String[] args){
+	Personaggio pers1= new Personaggio ("Marco",1000,1000);
+	pers1.aggiungiStato(Stati.haste);
+	Personaggio pers2= new Personaggio ("Nerd", 1000,1000);
+	Vector<Personaggio> buoni = new Vector<Personaggio> ();
+	buoni.add(pers1);
+	Vector<Personaggio> cattivi = new Vector<Personaggio> ();
+	cattivi.add(pers2);
+	Ambiente ambiente = new Ambiente(buoni, cattivi);
+	
+		
 	String pathname="./battle.txt";
 	Vector<String> righe = getRighe(pathname);
 	if(righe.size()==0){
@@ -21,8 +35,17 @@ public class Main {
 		ParserCarbuncle parser = new ParserCarbuncle(stream);
 		try {
 			Node root = parser.S();
-			root.accept(new SimpleSemanticVisitor());
+			SimpleSemanticVisitor visitor = new SimpleSemanticVisitor ();
+			visitor.setAmbiente(ambiente);
+			root.accept( visitor);
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			System.out.println("Sono il main, la situazione dopo l'azione di Marco è: \n" + ambiente.getPersonaggio("Marco").toString() );
+		} catch (PersonaggioNonTrovatoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
