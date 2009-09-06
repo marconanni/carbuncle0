@@ -37,7 +37,7 @@ public class Main {
 	 MainForm form = new MainForm(ambiente);
         form.setVisible(true);
 		
-	String pathname="./battle.txt";
+	/*String pathname="./battle.txt";
 	Vector<String> righe = getRighe(pathname);
 	if(righe.size()==0){
 		System.out.println("Qualcosa non ha funzionato nella lettura del file: il vettore � vuoto");
@@ -65,7 +65,7 @@ public class Main {
 		}
 		
 		
-	}
+	}*/
 	
 	}
 
