@@ -59,10 +59,15 @@ public class Personaggio {
 	}
 	
 	public void modificaHP(int variazione){ // da aggiungere controllo affinchè non si vada oltre il valoremax e min del tipo int, ma nell'esempio non accadrà mai.
-		if (getHP()<0)			
+				
 		setHP(getHP()+variazione);
 	}
 	
+	
+	public String toString(){
+		String stringona = ("\nNome :\t"+ "HP max: \t" + "HpAttuale:\t"+ "Status: \n"+this.Nome+"\t"+ HPMax+"\t\t"+HP+"\t\t"+status);
+		return stringona;
+	}
 	
 	
 	

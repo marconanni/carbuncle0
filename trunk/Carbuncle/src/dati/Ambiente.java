@@ -17,18 +17,18 @@ public class Ambiente {
 	public Ambiente(Vector<Personaggio> teamGiocatore,
 			Vector<Personaggio> teamAI) {
 		super();
-		teamGiocatore = teamGiocatore;
-		teamAI = teamAI;
+		this.teamGiocatore = teamGiocatore;
+		this.teamAI = teamAI;
 	}
 	
 	public Personaggio getPersonaggio (String nome) throws  PersonaggioNonTrovatoException{
 		int k;
 		for (k=0; k<teamGiocatore.size(); k++){
-			if (teamGiocatore.get(k).getNome().equals(nome))
+			if (teamGiocatore.get(k).getNome().compareTo(nome)==0)
 				return teamGiocatore.get(k);
 		}
 		for (k=0; k<teamAI.size(); k++){
-			if (teamAI.get(k).getNome().equals(nome))
+			if (teamAI.get(k).getNome().compareTo(nome)==0)
 				return teamAI.get(k);
 		}
 		throw new PersonaggioNonTrovatoException ("Impossibile trovare il personaggio "+ nome);
