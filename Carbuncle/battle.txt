@@ -1,1 +1,1 @@
-Nerd attacca Marco
+Nerd esegue SpiraleDiPotere  su  Marco

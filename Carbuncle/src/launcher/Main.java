@@ -13,9 +13,9 @@ public class Main {
 	 
 	
 	public static void main (String[] args){
-	Personaggio pers1= new Personaggio ("Marco",1000,1000);
-	pers1.aggiungiStato(Stati.haste);
-	Personaggio pers2= new Personaggio ("Nerd", 1000,1000);
+	Personaggio pers1= new Personaggio ("Marco",1000,900);
+	pers1.aggiungiStato(Stati.mutismo);
+	Personaggio pers2= new Personaggio ("Nerd", 1000,900);
 	Vector<Personaggio> buoni = new Vector<Personaggio> ();
 	buoni.add(pers1);
 	Vector<Personaggio> cattivi = new Vector<Personaggio> ();
@@ -44,7 +44,7 @@ public class Main {
 		}
 		
 		try {
-			System.out.println("Sono il main, la situazione dopo l'azione di Marco è: \n" + ambiente.getPersonaggio("Marco").toString() );
+			System.out.println("Sono il main, la situazione di Marco dopo l'azione di Marco è: \n" + ambiente.getPersonaggio("Marco").toString() );
 		} catch (PersonaggioNonTrovatoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

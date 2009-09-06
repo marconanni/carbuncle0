@@ -1,0 +1,33 @@
+
+Cose da sistemare se hai tempo:
+
+1 modifica la grammatica in modo che i nomi dei personaggi debbano iniziare con una lettera maiuscola
+2 
+
+modifica in nomi degli ogggetti, dei GF e delle tecniche speciali: devono iniziare tutti con una lettera minuscola (nota: sono da modificare sia la grammatica che i metodi dei visitor)
+
+Aggiungi controlli che un personaggio morto non possa fare azioni.
+
+Fai in modo che gli stati Haste non siano presenti contemporaneamente
+
+Fai in modo che l'Hp massimo non possa essere mai superato. ( o rinominalo in Hp iniziale)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
