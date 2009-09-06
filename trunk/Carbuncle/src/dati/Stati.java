@@ -1,7 +1,7 @@
 package dati;
 
 public enum Stati {
-	cecit‡,
+	cecit√†,
 	mutismo,
 	veleno,
 	pietra,

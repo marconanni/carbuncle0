@@ -34,7 +34,7 @@ import exceptions.*;
 // le magie di stato modificano gli stati direttamente
 // l'antidoto elimina lo stato veleno
 // l'erba dell'eco elimina lo stato mutismo
-// il collirio elimina lo stato cecità
+// il collirio elimina lo stato cecitï¿½
 // l'ago dorato elimina lo stato pietra
 // le magie di stato hanno lo stesso effetto che in FF
 
@@ -167,7 +167,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	   public Object visit(Magia n) {
 		  
 	      n.f0.accept(this);
-	      String nomemagia = (String)n.f1.accept(this); // nota: sono sicuro che il nome della magia sia un nome valido perchè ha già svolto il controllo il parser
+	      String nomemagia = (String)n.f1.accept(this); // nota: sono sicuro che il nome della magia sia un nome valido perchï¿½ ha giï¿½ svolto il controllo il parser
 	      n.f2.accept(this);
 	      calcolaMagia(nomemagia);
 	      
@@ -224,12 +224,12 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	   
 	  
 
-	private void calcolaAttacco() {  // nota: si può attaccare un bersaglio solo.
+	private void calcolaAttacco() {  // nota: si puï¿½ attaccare un bersaglio solo.
 			
 		   
 			
 			if((bersaglio.compareTo("alleati")==0)||(bersaglio.compareTo("nemici")==0))
-				System.out.println("è possibile attaccare fisicamente un bersaglio singolo");
+				System.out.println("ï¿½ possibile attaccare fisicamente un bersaglio singolo");
 			else
 			{
 				Personaggio target = null;
@@ -237,7 +237,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 					 target = ambiente.getPersonaggio(this.bersaglio);
 				} catch (PersonaggioNonTrovatoException e) {
 					// TODO Auto-generated catch block
-					System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+					System.out.println("il bersaglio indicato: " + bersaglio+" non ï¿½ un personaggio");
 				}
 				
 				target.modificaHP(-200);
@@ -248,20 +248,20 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	   
 	   }
 		
-	   private void calcolaMagia(String nomemagia) { // non è possible lanciare magie su tutta una squadra
+	   private void calcolaMagia(String nomemagia) { // non ï¿½ possible lanciare magie su tutta una squadra
 		   if((bersaglio.compareTo("alleati")==0)||(bersaglio.compareTo("nemici")==0))
-				System.out.println("è possibile lanciare magie solo su un bersaglio singolo");
+				System.out.println("ï¿½ possibile lanciare magie solo su un bersaglio singolo");
 		   
 		   else{
 			   Personaggio target = null;
 			   try {
 				 target = ambiente.getPersonaggio(bersaglio);
 			} catch (PersonaggioNonTrovatoException e) {
-				System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+				System.out.println("il bersaglio indicato: " + bersaglio+" non ï¿½ un personaggio");
 			}
 			Hashtable<String,Stati> magiaStati = new Hashtable<String,Stati>();
 			magiaStati.put("novox", Stati.mutismo);
-			magiaStati.put("blind", Stati.cecità);
+			magiaStati.put("blind", Stati.cecitÃ );
 			magiaStati.put("bio", Stati.veleno);
 			magiaStati.put("medusa", Stati.pietra);
 			magiaStati.put("slow", Stati.lentezza);
@@ -269,14 +269,14 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 			magiaStati.put("protect", Stati.protect);
 			magiaStati.put("shell", Stati.shell);
 			
-			if(magiaStati.containsKey(nomemagia)) // se è una magia si stato applico il rispettivo stato
+			if(magiaStati.containsKey(nomemagia)) // se ï¿½ una magia si stato applico il rispettivo stato
 				target.aggiungiStato(magiaStati.get(nomemagia));
 			else // magia bianca, ogni magia ha il suo effetto
 				if(nomemagia.equals("energia"))
 					target.modificaHP(400);
 				else
 					if(nomemagia.equals("esna")){// rimuove gli stati negativi
-						target.rimuoviStato(Stati.cecità);
+						target.rimuoviStato(Stati.cecitÃ );
 						target.rimuoviStato(Stati.lentezza);
 						target.rimuoviStato(Stati.mutismo);
 						target.rimuoviStato(Stati.pietra);
@@ -289,21 +289,21 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 							target.rimuoviStato(Stati.shell);
 						}
 						else
-							if(nomemagia.equals("reiz")){// se il personaggio è morto lo riporta in vita con il 20% dellHp max
+							if(nomemagia.equals("reiz")){// se il personaggio ï¿½ morto lo riporta in vita con il 20% dellHp max
 								if(target.getHP()<=0)
 									target.setHP(target.getHPMax()*20/100);
 								else
 									System.out.println(" usare reiz su un bersaglio con HP maggiore di zero non causa alcun effettto");
 							}
 							else 
-								if(nomemagia.equals("areiz")){// se il personaggio è morto lo riporta in vita con l'Hp al massimo
+								if(nomemagia.equals("areiz")){// se il personaggio ï¿½ morto lo riporta in vita con l'Hp al massimo
 									if(target.getHP()<=0)
 										target.setHP(target.getHPMax());
 									else
 										System.out.println("usare areiz su un bersaglio con HP maggiore di zero non causa alcun effetto");
 								}
 								else{
-									// controllo che nomemagia è tra le  magie rimaste ( visto che ci ha pensato il parser a controllare la validità della frase)
+									// controllo che nomemagia ï¿½ tra le  magie rimaste ( visto che ci ha pensato il parser a controllare la validitï¿½ della frase)
 									// tutte le altre magie comportano un danno di 250 HP
 									target.modificaHP(-250);
 								}
@@ -318,14 +318,14 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 	   private void calcolaOggetto(String nomeoggetto) { // anche gli oggetti si possono usare su un bersaglio singolo
 		   
 		   if((bersaglio.compareTo("alleati")==0)||(bersaglio.compareTo("nemici")==0))
-				System.out.println("è possibile usare oggetti solo su un bersaglio singolo");
+				System.out.println("ï¿½ possibile usare oggetti solo su un bersaglio singolo");
 		   
 		   else{
 			   Personaggio target = null;
 			   try {
 				 target = ambiente.getPersonaggio(bersaglio);
 			} catch (PersonaggioNonTrovatoException e) {
-				System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+				System.out.println("il bersaglio indicato: " + bersaglio+" non ï¿½ un personaggio");
 			}
 		   
 		   
@@ -333,7 +333,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 		   Hashtable<String,Stati> oggettiStatiRimossi = new Hashtable<String,Stati>();
 		   oggettiStatiRimossi.put("antidoto", Stati.veleno);
 		   oggettiStatiRimossi.put("erbaDellEco", Stati.mutismo);
-		   oggettiStatiRimossi.put("Collirio", Stati.cecità);
+		   oggettiStatiRimossi.put("Collirio", Stati.cecitÃ );
 		   oggettiStatiRimossi.put("AgoDorato", Stati.pietra);
 		   if(oggettiStatiRimossi.containsKey(nomeoggetto)){
 			  target.rimuoviStato(oggettiStatiRimossi.get(nomeoggetto));
@@ -352,7 +352,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 			
 		} // fine metodo calcolaOggetto
 	   
-	   private void calcolaInvocazione(String nomeGF) { // è possibile invocare un GF anche su tutto un team; il nome del GF non viene sfruttato perchè in questa semplice implementazione producono tutti lo stesso danno anche se autolesionistico si possono usare i GF anche contro il proprio team
+	   private void calcolaInvocazione(String nomeGF) { // ï¿½ possibile invocare un GF anche su tutto un team; il nome del GF non viene sfruttato perchï¿½ in questa semplice implementazione producono tutti lo stesso danno anche se autolesionistico si possono usare i GF anche contro il proprio team
 			List<Personaggio> targets = null;
 			try{
 				if (bersaglio.equals("alleati"))
@@ -369,7 +369,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 			}
 			
 			catch (PersonaggioNonTrovatoException e) {
-				System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+				System.out.println("il bersaglio indicato: " + bersaglio+" non ï¿½ un personaggio");
 			}
 		}
 		
@@ -379,7 +379,7 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 				 character = ambiente.getPersonaggio(personaggio);
 				
 			} catch (PersonaggioNonTrovatoException e) {
-				System.out.println("il pesonaggio indicato: " + personaggio+" non è un personaggio valido");
+				System.out.println("il pesonaggio indicato: " + personaggio+" non ï¿½ un personaggio valido");
 			}
 			
 			if(character.getHP()<character.getHPMax()*20/100 && character.getHP()>0){
@@ -400,11 +400,11 @@ public class SimpleSemanticVisitor implements GJNoArguVisitor{
 				}
 				
 				catch (PersonaggioNonTrovatoException e) {
-					System.out.println("il bersaglio indicato: " + bersaglio+" non è un personaggio");
+					System.out.println("il bersaglio indicato: " + bersaglio+" non ï¿½ un personaggio");
 				}
 			}
 			else 
-				System.out.println("un personaggio può eseguire tecniche speciali solo se il suo Hp è inferiore al 20% del suo Hp massimo");
+				System.out.println("un personaggio puï¿½ eseguire tecniche speciali solo se il suo Hp ï¿½ inferiore al 20% del suo Hp massimo");
 
 			
 		}
