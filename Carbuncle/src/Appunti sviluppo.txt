@@ -1,3 +1,7 @@
+Cose da fare: modificare il main in modo che crei l'ambiente e la form(passando l'ambiente alla form)
+creare un file di utilities in modo da mettere meno codice possibile nella form;
+
+
 
 Cose da sistemare se hai tempo:
 

@@ -6,6 +6,7 @@ import parser.*;
 import syntaxtree.*;
 import visitor.*;
 import dati.*;
+import gui.*;
 import exceptions.PersonaggioNonTrovatoException;
 
 
@@ -13,20 +14,33 @@ public class Main {
 	 
 	
 	public static void main (String[] args){
-	Personaggio pers1= new Personaggio ("Marco",1000,900);
-	pers1.aggiungiStato(Stati.mutismo);
-	Personaggio pers2= new Personaggio ("Nerd", 1000,900);
-	Vector<Personaggio> buoni = new Vector<Personaggio> ();
-	buoni.add(pers1);
-	Vector<Personaggio> cattivi = new Vector<Personaggio> ();
-	cattivi.add(pers2);
-	Ambiente ambiente = new Ambiente(buoni, cattivi);
 	
+       
+
+     Personaggio marco= new Personaggio ("Marco",1000,900);
+	
+	Personaggio sara= new Personaggio ("Sara", 1000,900);
+    Personaggio luca= new Personaggio ("Luca", 1000,900);
+
+	Vector<Personaggio> buoni = new Vector<Personaggio> ();
+	buoni.add(marco);
+    buoni.add(sara);
+    buoni.add(luca);
+
+    Personaggio pers1= new Personaggio ("GuardiaImperiale", 700,600);
+    Personaggio pers2= new Personaggio ("ComandanteImperiale", 1000,800);
+	Vector<Personaggio> cattivi = new Vector<Personaggio> ();
+	cattivi.add(pers1);
+    cattivi.add(pers2);
+	Ambiente ambiente = new Ambiente(buoni, cattivi);
+
+	 MainForm form = new MainForm(ambiente);
+        form.setVisible(true);
 		
 	String pathname="./battle.txt";
 	Vector<String> righe = getRighe(pathname);
 	if(righe.size()==0){
-		System.out.println("Qualcosa non ha funzionato nella lettura del file: il vettore è vuoto");
+		System.out.println("Qualcosa non ha funzionato nella lettura del file: il vettore ï¿½ vuoto");
 		}
 	
 	for(int k=0; k<righe.size();k++){
@@ -44,7 +58,7 @@ public class Main {
 		}
 		
 		try {
-			System.out.println("Sono il main, la situazione di Marco dopo l'azione di Marco è: \n" + ambiente.getPersonaggio("Marco").toString() );
+			System.out.println("Sono il main, la situazione di Marco dopo l'azione di Marco ï¿½: \n" + ambiente.getPersonaggio("Marco").toString() );
 		} catch (PersonaggioNonTrovatoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,7 +71,7 @@ public class Main {
 
 	// metodo che prende il file di testo e ne separa le righe 
 	private static Vector<String> getRighe(String pathname) {
-		Vector<String> righe = new Vector<String>();;
+		Vector<String> righe = new Vector<String>();
 		try {
 		
 			BufferedReader reader = new BufferedReader ( new FileReader(pathname));
