@@ -15,6 +15,9 @@ import dati.*;
 import java.io.*;
 import java.util.Vector;
 import javax.swing.JFileChooser;
+import parser.*;
+import visitor.*;
+import syntaxtree.*;
 
 /**
  *
@@ -26,6 +29,7 @@ public class MainForm extends javax.swing.JFrame {
     private Ambiente ambiente;
     private Vector<String> frasiDaValutare= new Vector<String> ();
     private Vector<String> frasiValutate= new Vector<String> ();
+    private ParserCarbuncle parser = new ParserCarbuncle(new StringReader (""));
 
     /** Creates new form MainForm */
     public MainForm(Ambiente ambiente) {
@@ -112,6 +116,11 @@ public class MainForm extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtValutate);
 
         cmdValuta.setText("Valuta Prossima Frase");
+        cmdValuta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmdValutaClick(evt);
+            }
+        });
 
         jLabel1.setText("Nome");
 
@@ -437,6 +446,31 @@ public class MainForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CaricaFileMouseClicked
 
+    private void cmdValutaClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmdValutaClick
+
+        String frase = frasiDaValutare.firstElement();
+        valutaFrase(frase);
+        // sposto la frase
+        frasiDaValutare.remove(frase);
+        frasiValutate.add(frase);
+        refresh();
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmdValutaClick
+
+    private void valutaFrase(String frase){
+         Reader stream= new StringReader(frase);
+		 parser.ReInit(stream);
+		try {
+			Node root = parser.S();
+			SimpleSemanticVisitor visitor = new SimpleSemanticVisitor ();
+			visitor.setAmbiente(ambiente);
+			root.accept( visitor);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 
     private void refresh (){
        try{ // tutto è fatto per un combattimento di 3 personaggi gestiti dal giocatore contro 2 gestiti dall' IA
@@ -480,10 +514,10 @@ public class MainForm extends javax.swing.JFrame {
            txtDaValutare.setText("");
            txtValutate.setText("");
            for(k=0; k<frasiDaValutare.size();k++)
-               txtDaValutare.append(frasiDaValutare.get(k));
+               txtDaValutare.append(frasiDaValutare.get(k)+"\n");
 
            for(k=0; k<frasiValutate.size();k++)
-               txtValutate.append(frasiValutate.get(k));
+               txtValutate.append(frasiValutate.get(k)+"\n");
 
 
 
@@ -581,5 +615,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextArea txtStatus5;
     private javax.swing.JTextArea txtValutate;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

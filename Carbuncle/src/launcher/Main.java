@@ -40,7 +40,7 @@ public class Main {
 	/*String pathname="./battle.txt";
 	Vector<String> righe = getRighe(pathname);
 	if(righe.size()==0){
-		System.out.println("Qualcosa non ha funzionato nella lettura del file: il vettore ï¿½ vuoto");
+		System.out.println("Qualcosa non ha funzionato nella lettura del file: il vettore è vuoto");
 		}
 	
 	for(int k=0; k<righe.size();k++){
