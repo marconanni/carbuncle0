@@ -1,1 +1,13 @@
 ComandanteImperiale attacca  Marco
+Marco lancia blind su ComandanteImperiale
+GuardiaImperiale usa Collirio su ComandanteImperiale
+Sara invoca Ifrit su nemici
+ComandanteImperiale usa pozione su GuardiaImperiale
+Luca attacca GuardiaImperiale
+GuardiaImperiale lancia haste su ComandanteImperiale
+ComandanteImperiale lancia flare su Marco
+ComandanteImperiale lancia blizzard su Marco
+ComandanteImperiale attacca Marco
+Sara lancia reiz su Marco
+Marco esegue BloodFest su nemici
+
