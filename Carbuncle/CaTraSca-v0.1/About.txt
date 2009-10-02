@@ -1,3 +1,0 @@
-Applicazione: CaTraSca
-Versione: 0.1
-Autore: Davide Candeloro
